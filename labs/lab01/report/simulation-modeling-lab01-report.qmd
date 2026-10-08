@@ -156,3 +156,13 @@ graph TD
 - акты внедрения и т.п.
 
 Каждое приложение начинается с новой страницы и имеет заголовок (например, «Приложение А. Листинг программы»).
+
+## Программная реализация
+
+### Базовая модель экспоненциального роста
+
+{{< include ../project/markdown/01_exponential_growth/01_exponential_growth.qmd >}}
+
+### Параметрическое исследование
+
+{{< include ../project/markdown/02_exponential_growth/02_exponential_growth.qmd >}}
