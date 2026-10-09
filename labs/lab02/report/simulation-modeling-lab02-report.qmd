@@ -156,3 +156,22 @@ graph TD
 - акты внедрения и т.п.
 
 Каждое приложение начинается с новой страницы и имеет заголовок (например, «Приложение А. Листинг программы»).
+
+
+## Программная реализация
+
+### Модель SIR
+
+{{< include ../project/markdown/sir_ode/sir_ode.qmd >}}
+
+### Модель Лотки-Вольтерры
+
+{{< include ../project/markdown/lv_ode/lv_ode.qmd >}}
+
+### Параметрическое исследование SIR
+
+{{< include ../project/markdown/02_sir_parametric/02_sir_parametric.qmd >}}
+
+### Параметрическое исследование Лотки-Вольтерры
+
+{{< include ../project/markdown/02_lv_parametric/02_lv_parametric.qmd >}}

@@ -39,3 +39,6 @@ format: # Formats
       - _resources/css/fonts.scss
       - beige
     logo: _resources/image/logo_rudn.png
+engine: julia
+julia:
+  exeflags: ["--project=../project"]
