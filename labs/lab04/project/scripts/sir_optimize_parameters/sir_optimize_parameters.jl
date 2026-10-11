@@ -1,0 +1,75 @@
+using DrWatson
+@quickactivate "project"
+
+using BlackBoxOptim, Random, Statistics
+using JLD2
+
+ENV["GKSwstype"] = "100"
+
+include(srcdir("sir_model.jl"))
+
+script_name = splitext(basename(PROGRAM_FILE))[1]
+mkpath(plotsdir(script_name))
+mkpath(datadir(script_name))
+
+function cost_multi(x)
+    β_val = x[1]
+    detection_time_val = round(Int, x[2])
+    death_rate_val = x[3]
+
+    replicates = 5
+    peak_vals = Float64[]
+    dead_vals = Int[]
+
+    for rep in 1:replicates
+        model = initialize_sir(;
+            Ns = [1000, 1000, 1000],
+            β_und = fill(β_val, 3),
+            β_det = fill(β_val/10, 3),
+            infection_period = 14,
+            detection_time = detection_time_val,
+            death_rate = death_rate_val,
+            reinfection_probability = 0.1,
+            Is = [0, 0, 1],
+            seed = 42 + rep,
+            n_steps = 100)
+
+        infected_frac(model) = count(a.status == :I for a in allagents(model)) / nagents(model)
+        peak_infected = 0.0
+        for step in 1:100
+            Agents.step!(model, 1)
+            frac = infected_frac(model)
+            frac > peak_infected && (peak_infected = frac)
+        end
+        push!(peak_vals, peak_infected)
+        push!(dead_vals, 3000 - nagents(model))
+    end
+
+    return (mean(peak_vals), mean(dead_vals) / 3000)
+end
+
+result = bboptimize(
+    cost_multi;
+    Method = :borg_moea,
+    FitnessScheme = BlackBoxOptim.ParetoFitnessScheme{2}(is_minimizing=true),
+    SearchRange = [
+        (0.1, 1.0),
+        (3.0, 14.0),
+        (0.01, 0.1)
+    ],
+    NumDimensions = 3,
+    MaxTime = 60,
+    TraceMode = :compact
+)
+
+best = best_candidate(result)
+fitness = best_fitness(result)
+
+println("Оптимальные параметры:")
+println("β_und = ", best[1])
+println("detection_time = ", round(Int, best[2]), " дней")
+println("death_rate = ", best[3])
+println("Пик = ", fitness[1])
+println("Доля умерших = ", fitness[2])
+
+@save datadir(script_name, "optimization_result.jld2") best fitness
