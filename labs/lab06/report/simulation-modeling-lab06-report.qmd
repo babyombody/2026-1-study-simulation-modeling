@@ -156,3 +156,21 @@ graph TD
 - акты внедрения и т.п.
 
 Каждое приложение начинается с новой страницы и имеет заголовок (например, «Приложение А. Листинг программы»).
+
+## Программная реализация
+
+### SIR в сетях Петри: базовый прогон
+
+{{< include ../project/markdown/sirpetri_run/sirpetri_run.qmd >}}
+
+### SIR в сетях Петри: сканирование β
+
+{{< include ../project/markdown/sirpetri_scan_parameters/sirpetri_scan_parameters.qmd >}}
+
+### SIR в сетях Петри: анимация
+
+{{< include ../project/markdown/sirpetri_animate/sirpetri_animate.qmd >}}
+
+### SIR в сетях Петри: итоговый отчёт
+
+{{< include ../project/markdown/sirpetri_report/sirpetri_report.qmd >}}
