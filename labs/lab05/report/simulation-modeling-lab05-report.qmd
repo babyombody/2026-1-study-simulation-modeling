@@ -156,3 +156,17 @@ graph TD
 - акты внедрения и т.п.
 
 Каждое приложение начинается с новой страницы и имеет заголовок (например, «Приложение А. Листинг программы»).
+
+## Программная реализация
+
+### Обедающие философы: базовые эксперименты
+
+{{< include ../project/markdown/dining_philosophers/dining_philosophers.qmd >}}
+
+### Обедающие философы: анимация
+
+{{< include ../project/markdown/dining_philosophers_animation/dining_philosophers_animation.qmd >}}
+
+### Обедающие философы: итоговый отчёт
+
+{{< include ../project/markdown/dining_philosophers_report/dining_philosophers_report.qmd >}}

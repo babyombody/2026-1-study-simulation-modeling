@@ -1,0 +1,36 @@
+# Обедающие философы: анимация
+GIF-анимация динамики маркировки (N=3 для наглядности).
+
+```{julia}
+import Pkg
+Pkg.activate("/home/dabakharev/work/study/2026-1/2026-1==study-simulation-modeling/2026-1-study-simulation-modeling/labs/lab05/project")
+using DrWatson
+
+include("/home/dabakharev/work/study/2026-1/2026-1==study-simulation-modeling/2026-1-study-simulation-modeling/labs/lab05/project/src/DiningPhilosophers_flat.jl")
+using Plots, Random
+
+ENV["GKSwstype"] = "100"
+
+script_name = "dining_philosophers_animation"
+mkpath(plotsdir(script_name))
+
+N = 3
+tmax = 30.0
+net, u0, names = build_classical_network(N)
+
+Random.seed!(123)
+df = simulate_stochastic(net, u0, tmax)
+
+anim = @animate for row in eachrow(df)
+    u = [row[col] for col in propertynames(row) if col != :time]
+    bar(1:length(u), u, legend=false,
+        ylims=(0, maximum(u0) + 1),
+        xlabel="Позиция", ylabel="Фишки",
+        title="Время = $(round(row.time, digits=2))")
+    xticks!(1:length(u), string.(names), rotation=45)
+end
+
+gif(anim, plotsdir(script_name, "philosophers_simulation.gif"), fps=2)
+println("Анимация сохранена в ", plotsdir(script_name, "philosophers_simulation.gif"))
+```
+
