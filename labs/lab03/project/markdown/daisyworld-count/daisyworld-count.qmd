@@ -1,0 +1,57 @@
+# Daisyworld: динамика числа маргариток
+График изменения числа чёрных и белых маргариток во времени.
+
+## Загрузка
+
+```{julia}
+import Pkg
+Pkg.activate("/home/dabakharev/work/study/2026-1/2026-1==study-simulation-modeling/2026-1-study-simulation-modeling/labs/lab03/project")
+using DrWatson
+
+using Agents
+using DataFrames
+using Plots
+using CairoMakie
+
+ENV["GKSwstype"] = "100"
+
+include("/home/dabakharev/work/study/2026-1/2026-1==study-simulation-modeling/2026-1-study-simulation-modeling/labs/lab03/project/src/daisyworld.jl")
+
+script_name = "daisyworld-count"
+mkpath(plotsdir(script_name))
+mkpath(datadir(script_name))
+```
+
+## Данные агентов
+
+```{julia}
+black(a) = a.breed == :black
+white(a) = a.breed == :white
+adata = [(black, count), (white, count)]
+```
+
+## Модель и запуск
+
+```{julia}
+model = daisyworld(; solar_luminosity = 1.0)
+agent_df, model_df = run!(model, 1000; adata)
+```
+
+## Визуализация (CairoMakie)
+
+```{julia}
+figure = Figure(size = (600, 400))
+ax = figure[1, 1] = Axis(figure, xlabel = "tick", ylabel = "daisy count")
+blackl = lines!(ax, agent_df[!, :time], agent_df[!, :count_black], color = :black)
+whitel = lines!(ax, agent_df[!, :time], agent_df[!, :count_white], color = :orange)
+Legend(figure[1, 2], [blackl, whitel], ["black", "white"], labelsize = 12)
+```
+
+## Сохранение
+
+```{julia}
+save(plotsdir(script_name, "daisy_count.png"), figure)
+
+println("График сохранён!")
+```
+

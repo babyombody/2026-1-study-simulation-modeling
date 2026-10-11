@@ -1,0 +1,74 @@
+# Daisyworld: базовая визуализация
+Модель Daisyworld: чёрные и белые маргаритки регулируют температуру планеты.
+
+## Активация проекта и загрузка пакетов
+
+```{julia}
+import Pkg
+Pkg.activate("/home/dabakharev/work/study/2026-1/2026-1==study-simulation-modeling/2026-1-study-simulation-modeling/labs/lab03/project")
+using DrWatson
+
+using Agents
+using DataFrames
+using Plots
+using CairoMakie
+
+ENV["GKSwstype"] = "100"
+
+include("/home/dabakharev/work/study/2026-1/2026-1==study-simulation-modeling/2026-1-study-simulation-modeling/labs/lab03/project/src/daisyworld.jl")
+
+script_name = "daisyworld"
+mkpath(plotsdir(script_name))
+mkpath(datadir(script_name))
+```
+
+## Создание модели
+
+```{julia}
+model = daisyworld()
+```
+
+## Цвет маргариток — по виду
+
+```{julia}
+daisycolor(a::Daisy) = a.breed
+
+plotkwargs = (
+    agent_color = daisycolor,
+    agent_size = 20,
+    agent_marker = '♠',
+    heatarray = :temperature,
+    heatkwargs = (colorrange = (-20, 60),)
+)
+```
+
+## Визуализация: шаг 0
+
+```{julia}
+plt1, _ = abmplot(model; plotkwargs...)
+```
+
+## Визуализация: шаг 5
+
+```{julia}
+step!(model, 5)
+plt2, _ = abmplot(model; heatarray = model.temperature, plotkwargs...)
+```
+
+## Визуализация: шаг 40
+
+```{julia}
+step!(model, 40)
+plt3, _ = abmplot(model; heatarray = model.temperature, plotkwargs...)
+```
+
+## Сохранение результатов
+
+```{julia}
+save(plotsdir(script_name, "daisy_step001.png"), plt1)
+save(plotsdir(script_name, "daisy_step005.png"), plt2)
+save(plotsdir(script_name, "daisy_step040.png"), plt3)
+
+println("Готово! Графики сохранены в ", plotsdir(script_name))
+```
+

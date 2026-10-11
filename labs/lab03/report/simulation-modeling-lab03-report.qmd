@@ -156,3 +156,29 @@ graph TD
 - акты внедрения и т.п.
 
 Каждое приложение начинается с новой страницы и имеет заголовок (например, «Приложение А. Листинг программы»).
+
+## Программная реализация
+
+### Daisyworld: базовая визуализация
+
+{{< include ../project/markdown/daisyworld/daisyworld.qmd >}}
+
+### Daisyworld: динамика числа маргариток
+
+{{< include ../project/markdown/daisyworld-count/daisyworld-count.qmd >}}
+
+### Daisyworld: динамика модели (luminosity)
+
+{{< include ../project/markdown/daisyworld-luminosity/daisyworld-luminosity.qmd >}}
+
+### Daisyworld: базовая визуализация (параметры)
+
+{{< include ../project/markdown/daisyworld_param/daisyworld_param.qmd >}}
+
+### Daisyworld: динамика числа маргариток (параметры)
+
+{{< include ../project/markdown/daisyworld-count_param/daisyworld-count_param.qmd >}}
+
+### Daisyworld: динамика модели (параметры)
+
+{{< include ../project/markdown/daisyworld-luminosity_param/daisyworld-luminosity_param.qmd >}}
