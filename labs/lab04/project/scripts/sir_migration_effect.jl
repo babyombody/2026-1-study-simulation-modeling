@@ -1,8 +1,8 @@
 # # SIR: эффект миграции
 
+import Pkg
+Pkg.activate("/home/dabakharev/work/study/2026-1/2026-1==study-simulation-modeling/2026-1-study-simulation-modeling/labs/lab04/project")
 using DrWatson
-@quickactivate "project"
-
 using Agents, DataFrames, Plots, CSV, Random, Statistics
 
 ENV["GKSwstype"] = "100"

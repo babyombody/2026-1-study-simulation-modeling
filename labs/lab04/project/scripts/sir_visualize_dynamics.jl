@@ -1,9 +1,9 @@
 # # SIR: сводная визуализация
 # Загружаем `beta_scan_all.csv` и строим 3-панельный график.
 
+import Pkg
+Pkg.activate("/home/dabakharev/work/study/2026-1/2026-1==study-simulation-modeling/2026-1-study-simulation-modeling/labs/lab04/project")
 using DrWatson
-@quickactivate "project"
-
 using DataFrames, CSV, Plots
 
 ENV["GKSwstype"] = "100"

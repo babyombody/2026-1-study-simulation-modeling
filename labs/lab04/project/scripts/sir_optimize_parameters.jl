@@ -1,9 +1,9 @@
 # # SIR: многокритериальная оптимизация
 # Ищем Парето-фронт по (пик, смертность).
 
+import Pkg
+Pkg.activate("/home/dabakharev/work/study/2026-1/2026-1==study-simulation-modeling/2026-1-study-simulation-modeling/labs/lab04/project")
 using DrWatson
-@quickactivate "project"
-
 using BlackBoxOptim, Random, Statistics
 using JLD2
 

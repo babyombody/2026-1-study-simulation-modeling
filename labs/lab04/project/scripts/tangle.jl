@@ -2,6 +2,7 @@
 #!/usr/bin/env julia
 # tangle.jl - Генератор отчетов из Literate-скриптов
 # Использование: julia tangle.jl <путь_к_скрипту>
+import Pkg
 using DrWatson
 @quickactivate
 using Literate

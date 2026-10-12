@@ -4,14 +4,13 @@
 import Pkg
 Pkg.activate("/home/dabakharev/work/study/2026-1/2026-1==study-simulation-modeling/2026-1-study-simulation-modeling/labs/lab04/project")
 using DrWatson
-
 using Agents, DataFrames, Plots, CSV, Random, Statistics
 
 ENV["GKSwstype"] = "100"
 
-include("/home/dabakharev/work/study/2026-1/2026-1==study-simulation-modeling/2026-1-study-simulation-modeling/labs/lab04/project/src/sir_model.jl")
+include(srcdir("sir_model.jl"))
 
-script_name = "sir_migration_effect"
+script_name = splitext(basename(PROGRAM_FILE))[1]
 mkpath(plotsdir(script_name))
 mkpath(datadir(script_name))
 

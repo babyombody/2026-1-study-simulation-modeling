@@ -5,12 +5,11 @@
 import Pkg
 Pkg.activate("/home/dabakharev/work/study/2026-1/2026-1==study-simulation-modeling/2026-1-study-simulation-modeling/labs/lab04/project")
 using DrWatson
-
 using DataFrames, CSV, Plots
 
 ENV["GKSwstype"] = "100"
 
-script_name = "sir_visualize_dynamics"
+script_name = splitext(basename(PROGRAM_FILE))[1]
 mkpath(plotsdir(script_name))
 
 csv_file = datadir("sir_scan_beta", "beta_scan_all.csv")

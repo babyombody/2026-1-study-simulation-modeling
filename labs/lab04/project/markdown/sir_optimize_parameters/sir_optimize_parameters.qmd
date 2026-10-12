@@ -5,15 +5,14 @@
 import Pkg
 Pkg.activate("/home/dabakharev/work/study/2026-1/2026-1==study-simulation-modeling/2026-1-study-simulation-modeling/labs/lab04/project")
 using DrWatson
-
 using BlackBoxOptim, Random, Statistics
 using JLD2
 
 ENV["GKSwstype"] = "100"
 
-include("/home/dabakharev/work/study/2026-1/2026-1==study-simulation-modeling/2026-1-study-simulation-modeling/labs/lab04/project/src/sir_model.jl")
+include(srcdir("sir_model.jl"))
 
-script_name = "sir_optimize_parameters"
+script_name = splitext(basename(PROGRAM_FILE))[1]
 mkpath(plotsdir(script_name))
 mkpath(datadir(script_name))
 
