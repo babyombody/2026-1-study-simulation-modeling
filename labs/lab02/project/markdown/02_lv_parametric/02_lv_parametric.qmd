@@ -8,15 +8,16 @@
 import Pkg
 Pkg.activate("/home/dabakharev/work/study/2026-1/2026-1==study-simulation-modeling/2026-1-study-simulation-modeling/labs/lab02/project")
 using DrWatson
-
 using DifferentialEquations
 using DataFrames
 using Plots
-ENV["GKSwstype"] = "100"
-gr(format=:png)using Statistics
+using Statistics
 using FFTW
 using JLD2
 using BenchmarkTools
+
+ENV["GKSwstype"] = "100"
+gr(format=:png)
 
 script_name = splitext(basename(PROGRAM_FILE))[1]
 mkpath(plotsdir(script_name))
@@ -45,7 +46,6 @@ end
 ## Базовые параметры эксперимента
 
 ```{julia}
-
 base_params = Dict(
     :u0    => [[40.0, 9.0]],
     :α     => [0.1],

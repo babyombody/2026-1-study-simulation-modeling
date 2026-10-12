@@ -4,9 +4,9 @@
 
 # ## Активация проекта и загрузка пакетов
 
+import Pkg
+Pkg.activate("/home/dabakharev/work/study/2026-1/2026-1==study-simulation-modeling/2026-1-study-simulation-modeling/labs/lab02/project")
 using DrWatson
-@quickactivate "project"
-
 using DifferentialEquations
 using DataFrames
 using Plots

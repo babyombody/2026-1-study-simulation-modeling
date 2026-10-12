@@ -364,3 +364,6 @@ plugins
 .vbox/
 .config/
 vm/
+
+*Zone.Identifier*
+*.save

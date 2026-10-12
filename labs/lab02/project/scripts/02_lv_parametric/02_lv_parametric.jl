@@ -1,6 +1,6 @@
+import Pkg
+Pkg.activate("/home/dabakharev/work/study/2026-1/2026-1==study-simulation-modeling/2026-1-study-simulation-modeling/labs/lab02/project")
 using DrWatson
-@quickactivate "project"
-
 using DifferentialEquations
 using DataFrames
 using Plots
@@ -26,7 +26,6 @@ function lotka_volterra!(du, u, p, t)
     nothing
 end
 
-base_params_single = dict_list(base_params)[1]
 base_params = Dict(
     :u0    => [[40.0, 9.0]],
     :α     => [0.1],
