@@ -1,5 +1,6 @@
+import Pkg
+Pkg.activate("/home/dabakharev/work/study/2026-1/2026-1==study-simulation-modeling/2026-1-study-simulation-modeling/labs/lab05/project")
 using DrWatson
-@quickactivate "project"
 
 # Here you may include files from the source directory
 include(srcdir("dummy_src_file.jl"))
