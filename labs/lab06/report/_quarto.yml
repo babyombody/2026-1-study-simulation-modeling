@@ -6,9 +6,12 @@ standalone: true
 self-contained: true
 
 ## Julia support
-# engine: julia
-# julia:
-#   exeflags: ["--project=../project"]
+## Julia support
+engine: julia
+julia:
+  exe: "/home/dabakharev/.juliaup/bin/julia"
+  exeflags: ["--project=../project"]
+  kernel: "julia-1.13"
 
 ## Generic options
 lang: ru-RU
